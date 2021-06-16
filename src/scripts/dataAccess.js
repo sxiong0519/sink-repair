@@ -28,15 +28,6 @@ export const sendRequest = (userServiceRequest) => {
         },
         body: JSON.stringify(userServiceRequest)
     }
-
-
-    return fetch(`${API}/requests`, fetchOptions)
-        .then(response => response.json())
-        .then(() => {
-            // do something after the POST is finished. Stay tuned for what to put here!
-        })
-}
-
     // Add this...
     const mainContainer = document.querySelector("#container");
 
@@ -46,3 +37,15 @@ export const sendRequest = (userServiceRequest) => {
             // ...and this
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
+
+    }
+
+    export const deleteRequest = (id) => {
+        return fetch(`${API}/requests/${id}`, { method: "DELETE" })
+            .then(
+                () => {
+                    mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+                }
+            )
+    }
+    
