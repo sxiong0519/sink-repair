@@ -1,3 +1,5 @@
+const mainContainer = document.querySelector("#container");
+
 const applicationState = {
     requests: []
 }
@@ -29,7 +31,7 @@ export const sendRequest = (userServiceRequest) => {
         body: JSON.stringify(userServiceRequest)
     }
     // Add this...
-    const mainContainer = document.querySelector("#container");
+    
 
     return fetch(`${API}/requests`, fetchOptions)
         .then(response => response.json())
@@ -48,4 +50,5 @@ export const sendRequest = (userServiceRequest) => {
                 }
             )
     }
+    
     
