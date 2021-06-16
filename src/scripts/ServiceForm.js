@@ -1,3 +1,27 @@
+import { sendRequest } from "./dataAccess.js"
+
+const mainContainer = document.querySelector("#container")
+
+mainContainer.addEventListener("click", clickEvent => { //when something in the maincontainer is clicked - maincontainer is referenced in main.js
+    if (clickEvent.target.id === "submitRequest") { //the button below
+        // Get what the user typed into the form fields
+        const userDescription = document.querySelector("input[name='serviceDescription']").value //the input value of description is = to userDescription
+        const userAddress = document.querySelector("input[name='serviceAddress']").value // ""
+        const userBudget = document.querySelector("input[name='serviceBudget']").value // ""
+        const userDate = document.querySelector("input[name='serviceDate']").value // ""
+
+        // Make an object out of the user input
+        const dataToSendToAPI = {
+            description: userDescription,
+            address: userAddress,
+            budget: userBudget,
+            neededBy: userDate
+        }
+
+        // Send the data to the API for permanent storage
+        sendRequest(dataToSendToAPI)
+    }
+})
 
 export const ServiceForm = () => {
     let html = `
