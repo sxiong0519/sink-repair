@@ -4,7 +4,7 @@ const applicationState = {
 
 const API = "http://localhost:8088"
 
-const fetchRequests = () => {
+export const fetchRequests = () => {
     return fetch(`${API}/requests`)
         .then(response => response.json())
         .then(
