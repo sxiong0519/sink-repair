@@ -1,6 +1,34 @@
 {
-  "plumbers": [],
-  "completions": [],
+  "plumbers": [
+    {
+      "id": 1,
+      "name": "Maude"
+    },
+    {
+      "id": 2,
+      "name": "Merle"
+    }
+  ],
+  "completions": [
+    {
+      "requestId": "1",
+      "plumberId": "1",
+      "timestamp": 1624392145984,
+      "id": 1
+    },
+    {
+      "requestId": "2",
+      "plumberId": "2",
+      "timestamp": 1624392167669,
+      "id": 2
+    },
+    {
+      "requestId": "3",
+      "plumberId": "1",
+      "timestamp": 1624392175573,
+      "id": 3
+    }
+  ],
   "requests": [
     {
       "id": 1,
@@ -8,6 +36,20 @@
       "address": "34445 Bianka Ports",
       "budget": 400,
       "neededBy": "2021-08-27"
+    },
+    {
+      "description": "Sink Repair",
+      "address": "2302 Baxter Street",
+      "budget": "43444",
+      "neededBy": "2021-07-07",
+      "id": 2
+    },
+    {
+      "description": "Toilet",
+      "address": "123 Bubble Street",
+      "budget": "1111",
+      "neededBy": "2021-06-22",
+      "id": 3
     }
   ]
 }

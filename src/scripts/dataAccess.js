@@ -1,7 +1,8 @@
 const mainContainer = document.querySelector("#container");
 
 const applicationState = {
-    requests: []
+    requests: [],
+    plumbers: []
 }
 
 const API = "http://localhost:8088"
@@ -17,9 +18,23 @@ export const fetchRequests = () => {
         )
         
 }
+export const fetchPlumbers = () => {
+    return fetch(`${API}/plumbers`)
+        .then(response => response.json())
+        .then(
+            (servicePlumbers) => {
+                // Store the external state in application state
+                applicationState.plumbers = servicePlumbers
+            }
+        )
+        
+}
 
 export const getRequests = () => {
     return [...applicationState.requests]
+}
+export const getPlumbers = () => {
+    return [...applicationState.plumbers]
 }
 
 export const sendRequest = (userServiceRequest) => {
@@ -52,3 +67,19 @@ export const sendRequest = (userServiceRequest) => {
     }
     
     
+    export const saveCompletion = (POSTrequest) => {
+        const assignedPlumbers = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(POSTrequest)
+        }
+    
+        return fetch(`${API}/completions`, assignedPlumbers)
+        .then(response => response.json())
+        .then(() => {
+            // ...and this
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+    }

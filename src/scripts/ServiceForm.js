@@ -24,6 +24,7 @@ mainContainer.addEventListener("click", clickEvent => { //when something in the 
 })
 
 export const ServiceForm = () => {
+    
     let html = `
         <div class="field">
             <label class="label" for="serviceDescription">Description</label>
@@ -43,7 +44,10 @@ export const ServiceForm = () => {
         </div>
 
         <button class="button" id="submitRequest">Submit Request</button>
-    `
+        `
 
     return html
 }
+
+
+
