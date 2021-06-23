@@ -2,7 +2,8 @@ const mainContainer = document.querySelector("#container");
 
 const applicationState = {
     requests: [],
-    plumbers: []
+    plumbers: [],
+    completions: []
 }
 
 const API = "http://localhost:8088"
@@ -18,6 +19,7 @@ export const fetchRequests = () => {
         )
         
 }
+
 export const fetchPlumbers = () => {
     return fetch(`${API}/plumbers`)
         .then(response => response.json())
@@ -30,9 +32,29 @@ export const fetchPlumbers = () => {
         
 }
 
-export const getRequests = () => {
-    return [...applicationState.requests]
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+        .then(response => response.json())
+        .then(
+            (serviceCompletions) => {
+                // Store the external state in application state
+                applicationState.completions = serviceCompletions
+            }
+        )
+        
 }
+
+export const getRequests = () => {
+    const requestCompleted = applicationState.requests.map( request => {
+        request.completion = !!applicationState.completions.find(completion => completion.requestId === request.id)
+        return request
+    })
+    .sort((complete, notComplete) => {
+        return complete.completion - notComplete.completion
+    })
+    return requestCompleted
+}
+
 export const getPlumbers = () => {
     return [...applicationState.plumbers]
 }
