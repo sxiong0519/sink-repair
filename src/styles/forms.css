@@ -21,3 +21,9 @@
     color: lightgoldenrodyellow;
     font-size: 1rem;
 } 
+
+li {
+    background-color: yellow;
+    margin: 1em;
+    list-style-type: none;
+}

@@ -1,4 +1,4 @@
-import { fetchPlumbers, fetchRequests } from "./dataAccess.js" // make sure the requests data has been fetched and set into application state first thing
+import { fetchCompletions, fetchPlumbers, fetchRequests } from "./dataAccess.js" // make sure the requests data has been fetched and set into application state first thing
 import { SinkRepair } from "./SinkRepair.js"
 
 
@@ -20,9 +20,9 @@ mainContainer.addEventListener(
 )
 
 fetchRequests()
-    .then(
-        fetchPlumbers
+    .then( () => fetchPlumbers()
     )
-    .then(
-        render()
+    .then( () => fetchCompletions()
+    )
+    .then( () => render()
     )

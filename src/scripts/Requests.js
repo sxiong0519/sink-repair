@@ -13,10 +13,7 @@ export const Requests = () => {
         return `
         <li>
             ${request.description}
-            <button class="request__delete delete"
-                    id="request--${request.id} request">
-                Delete
-            </button>
+            
             <select class="plumbers" id="plumbers">
             <option value="">Choose</option>
             ${
@@ -27,6 +24,10 @@ export const Requests = () => {
                 ).join("")
             }
         </select>
+        <button class="request__delete delete"
+                    id="request--${request.id} request">
+                Delete
+            </button>
         </li>
     `
     
@@ -59,8 +60,8 @@ mainContainer.addEventListener(
                    3. date_created
             */
             const completion = {
-                requestId: requestId,
-                plumberId: plumberId,
+                requestId: parseInt(requestId),
+                plumberId: parseInt(plumberId),
                 timestamp: Date.now()
              }
 
